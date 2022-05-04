@@ -1,0 +1,11 @@
+﻿<Application x:Class="werty.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:werty"
+             StartupUri="/Windows/MaterialList.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="ADditionalBackground"> #FEA9AB</SolidColorBrush>
+        <SolidColorBrush x:Key="AccentColor">#EAB14D</SolidColorBrush>
+        <FontFamily x:Key="MainFont"> Segoe Print</FontFamily>
+    </Application.Resources>
+</Application>

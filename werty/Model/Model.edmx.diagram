@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb5d5f0ba6db48e2952496ea0e051938" Name="Diagram1">
+        <EntityTypeShape EntityType="Drafr.Agent" Width="1.5" PointX="11" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.AgentPriorityHistory" Width="1.5" PointX="13.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.AgentType" Width="1.5" PointX="8.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.Material" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.MaterialCountHistory" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.MaterialType" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.Product" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.ProductCostHistory" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.ProductMaterial" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.ProductSale" Width="1.5" PointX="16.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.ProductType" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.Shop" Width="1.5" PointX="13.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.Supplier" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.TypeSupplier" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Drafr.Unit" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="Drafr.FK_Agent_AgentType" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_AgentPriorityHistory_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_ProductSale_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_Shop_Agent" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_Material_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_Material_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_MaterialCountHistory_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_ProductMaterial_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_Product_ProductType" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_ProductCostHistory_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_ProductMaterial_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Drafr.MaterialSupplier" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
