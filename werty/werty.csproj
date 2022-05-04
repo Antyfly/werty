@@ -67,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Windows\ChangeMinCountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MaterialList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +78,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\DataBaseHelper.cs" />
+    <Compile Include="Model\MaterialExtension.cs" />
+    <Compile Include="Windows\ChangeMinCountWindow.xaml.cs">
+      <DependentUpon>ChangeMinCountWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MaterialList.xaml.cs">
       <DependentUpon>MaterialList.xaml</DependentUpon>

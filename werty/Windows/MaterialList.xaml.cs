@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using werty.Model;
 
 namespace werty.Windows
 {
@@ -23,8 +24,90 @@ namespace werty.Windows
         public MaterialList()
         {
             InitializeComponent();
-            MaterialListView.ItemsSource = new List<int> { 1, 1, 1, 1, 1, 1 };
+
+            var materialTypeList = DataBaseHelper.GetMaterialsType();
+            materialTypeList.Insert(0, new MaterialType { Title = "Все"});
+            FilterComboBox.ItemsSource = materialTypeList;
+            MaterialListView.ItemsSource = DataBaseHelper.GetMaterials();
            
+        }
+
+        public void UpdateMaterialList()
+        {
+            if (SearchTextBox is null || SortComboBox is null || FilterComboBox is null)
+                return;
+            
+            var materials = DataBaseHelper.GetMaterials();
+
+            var allMaterialCount = materials.Count;
+
+            if (SearchTextBox.Text.Length != 0)
+            {
+                materials = materials.Where(m => m.Title.Contains(SearchTextBox.Text) || m.Description?.Contains(SearchTextBox.Text) == true).ToList();
+            }
+            switch(((ComboBoxItem)SortComboBox.SelectedItem).Content.ToString())
+            {
+                case "Наименование по возростанию":
+                    materials = materials.OrderBy(m => m.Title).ToList();
+                    break;
+                case "Наименование по убыванию":
+                    materials = materials.OrderByDescending(m => m.Title).ToList();
+                    break;
+                case "Остаток по возрастанию":
+                    materials = materials.OrderBy(m => m.CountInStock).ToList();
+                    break;
+                case "Остаток по убыванию":
+                    materials = materials.OrderByDescending(m => m.CountInStock).ToList();
+                    break;
+                case "Стоимость по возрастанию":
+                    materials = materials.OrderBy(m => m.Cost).ToList();
+                    break;
+                case "Стоимость по убыванию":
+                    materials = materials.OrderByDescending(m => m.Cost).ToList();
+                    break;
+            }
+
+
+            if (((MaterialType)FilterComboBox.SelectedItem).Title != "Все")
+            {
+                materials = materials.Where(m=> m.MaterialType == (MaterialType)FilterComboBox.SelectedItem).ToList();
+            }
+
+            var fillteredMaterialsCount = materials.Count;
+            MaterialCountTextBlock.Text = $"Выведено {fillteredMaterialsCount} из {allMaterialCount}";
+
+            MaterialListView.ItemsSource = materials;
+
+
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateMaterialList();
+        }
+
+        private void SortTextBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateMaterialList();
+        }
+
+        private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateMaterialList();
+        }
+
+        private void MaterialListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView materialListView = sender as ListView;
+
+            if (materialListView.SelectedItems.Count == 0)
+            {
+                ChangeMinCountButton.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                ChangeMinCountButton.Visibility= Visibility.Visible;
+            }
         }
     }
 }
