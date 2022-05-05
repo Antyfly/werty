@@ -19,8 +19,12 @@ namespace werty.Windows
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    
     public partial class MaterialList : Window
     {
+        private const int ItemsPerPage = 15;
+
+        private int CurrentPage = 0;
         public MaterialList()
         {
             InitializeComponent();
@@ -78,6 +82,7 @@ namespace werty.Windows
 
             MaterialListView.ItemsSource = materials;
 
+            GenerateButton();
 
         }
 
@@ -108,6 +113,40 @@ namespace werty.Windows
             {
                 ChangeMinCountButton.Visibility= Visibility.Visible;
             }
+        }
+
+        private void ChangeMinCountButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ChangeMinCountWindow(MaterialListView.SelectedItems.Cast<Material>().ToList()).ShowDialog();
+            UpdateMaterialList();
+        }
+
+        private void GenerateButton()
+        {
+
+            NumberButtonStackPanel.Children.Clear();
+            int pageCount = Convert.ToInt32(Math.Floor((double)MaterialListView.Items.Count / ItemsPerPage));
+            var materials = DataBaseHelper.GetMaterials();
+            for (int i = 0; i < 5; i++)
+            {
+                if (ItemsPerPage * i > materials.Count)
+                    continue;
+
+                Button newButton = new Button()
+                    {
+                    Content = i+1,
+                    Background = Brushes.Transparent,
+                    Height = 25
+                };
+                newButton.Click += NewButton_Click;
+
+                NumberButtonStackPanel.Children.Add(newButton);
+            }
+        }
+
+        private void NewButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

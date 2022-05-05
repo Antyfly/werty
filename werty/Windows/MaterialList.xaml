@@ -169,11 +169,31 @@
                      Margin="10"
                      Background="{StaticResource AccentColor}"
                      Visibility="Hidden"
-                     x:Name="ChangeMinCountButton">
+                     x:Name="ChangeMinCountButton"
+                     Click="ChangeMinCountButton_Click">
                 <TextBlock Text="Изменить минимальное количество"
                            TextAlignment="Center"
                            TextWrapping="Wrap" />
             </Button>
+
+
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                
+                <Button Content="&lt;" x:Name="LeftNumberButton"
+                        Background="Transparent"
+                        Width="25"
+                        Height="25" />
+
+                <StackPanel Orientation="Horizontal" x:Name="NumberButtonStackPanel" />
+                <Button Content=">"
+                        x:Name="RightNumberButton"
+                        Background="Transparent"
+                        Width="25"
+                        Height="25" />
+            </StackPanel>
+
         </Grid>
     </Grid>
 </Window>
